@@ -1,18 +1,18 @@
 pipeline {
     agent any 
     environment {
-    DOCKERHUB_CREDENTIALS = credentials('docker-hub-udaychinnala')
+    DOCKERHUB_CREDENTIALS = credentials('docker-hub-Abhi-1202')
     }
     stages { 
         stage('SCM Checkout') {
             steps{
-            git 'https://github.com/Udaychinnala/nodejs-demo.git'
+            git 'https://github.com/Abhi-1202/nodejs-demo.git'
             }
         }
 
         stage('Build docker image') {
             steps {  
-                sh 'docker build -t udaychinnala/nodeapp1:$BUILD_NUMBER .'
+                sh 'docker build -t Abhi-1202/nodeapp1:$BUILD_NUMBER .'
             }
         }
         stage('login to dockerhub') {
@@ -22,17 +22,17 @@ pipeline {
         }
         stage('push image') {
             steps{
-                sh 'docker push udaychinnala/nodeapp1:$BUILD_NUMBER'
+                sh 'docker push Abhi-1202/nodeapp1:$BUILD_NUMBER'
             }
         }
         stage('pull image') {
             steps{
-                sh 'docker pull udaychinnala/nodeapp1:$BUILD_NUMBER'
+                sh 'docker pull Abhi-1202/nodeapp1:$BUILD_NUMBER'
             }
         }
       stage('run image') {
             steps{
-                sh 'docker run -d -p 443:80 udaychinnala/nodeapp1:$BUILD_NUMBER'
+                sh 'docker run -d -p 443:80 Abhi-1202/nodeapp1:$BUILD_NUMBER'
             }
         }   
 }
