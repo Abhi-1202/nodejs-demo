@@ -32,7 +32,7 @@ pipeline {
         }
       stage('run image') {
             steps{
-                sh 'docker run -d -p 443:80 Abhi-1202/nodeapp1:$BUILD_NUMBER'
+                sh 'docker run -d -p 443:80 abhiss1202/nodeapp1:$BUILD_NUMBER'
             }
         }   
 }
