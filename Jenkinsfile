@@ -1,18 +1,18 @@
 pipeline {
     agent any 
     environment {
-    DOCKERHUB_CREDENTIALS = credentials('docker-hub-Abhi-1202')
+    DOCKERHUB_CREDENTIALS = credentials('docker-hub-abhiss1202')
     }
     stages { 
         stage('SCM Checkout') {
             steps{
-            git 'https://github.com/Abhi-1202/nodejs-demo.git'
+            git 'https://github.com/abhiss1202/nodejs-demo.git'
             }
         }
 
         stage('Build docker image') {
             steps {  
-                sh 'docker build -t Abhi-1202/nodeapp1:$BUILD_NUMBER .'
+                sh 'docker build -t abhiss1202/nodeapp1:$BUILD_NUMBER .'
             }
         }
         stage('login to dockerhub') {
@@ -22,12 +22,12 @@ pipeline {
         }
         stage('push image') {
             steps{
-                sh 'docker push Abhi-1202/nodeapp1:$BUILD_NUMBER'
+                sh 'docker push abhiss1202/nodeapp1:$BUILD_NUMBER'
             }
         }
         stage('pull image') {
             steps{
-                sh 'docker pull Abhi-1202/nodeapp1:$BUILD_NUMBER'
+                sh 'docker pull abhiss1202/nodeapp1:$BUILD_NUMBER'
             }
         }
       stage('run image') {
